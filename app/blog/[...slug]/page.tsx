@@ -1,34 +1,34 @@
-import { posts } from "#site/content";
-import { MDXContent } from "@/components/mdx-components";
-import { notFound } from "next/navigation";
+import { posts } from "#site/content"
+import { MDXContent } from "@/components/mdx-components"
+import { notFound } from "next/navigation"
 
-import "@/styles/mdx.css";
-import { Metadata } from "next";
-import { siteConfig } from "@/config/site";
+import "@/styles/mdx.css"
+import { Metadata } from "next"
+import { siteConfig } from "@/config/site"
 interface PostPageProps {
   params: {
-    slug: string[];
-  };
+    slug: string[]
+  }
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
-  const slug = params?.slug?.join("/");
-  const post = posts.find((post) => post.slugAsParams === slug);
+  const slug = params?.slug?.join("/")
+  const post = posts.find(post => post.slugAsParams === slug)
 
-  return post;
+  return post
 }
 
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params);
+  const post = await getPostFromParams(params)
 
   if (!post) {
-    return {};
+    return {}
   }
 
-  const ogSearchParams = new URLSearchParams();
-  ogSearchParams.set("title", post.title);
+  const ogSearchParams = new URLSearchParams()
+  ogSearchParams.set("title", post.title)
 
   return {
     title: post.title,
@@ -54,20 +54,20 @@ export async function generateMetadata({
       description: post.description,
       images: [`/api/og?${ogSearchParams.toString()}`],
     },
-  };
+  }
 }
 
 export async function generateStaticParams(): Promise<
   PostPageProps["params"][]
 > {
-  return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
+  return posts.map(post => ({ slug: post.slugAsParams.split("/") }))
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params);
+  const post = await getPostFromParams(params)
 
   if (!post || !post.published) {
-    notFound();
+    notFound()
   }
 
   return (
@@ -79,5 +79,5 @@ export default async function PostPage({ params }: PostPageProps) {
       <hr className="my-4" />
       <MDXContent code={post.body} />
     </article>
-  );
+  )
 }

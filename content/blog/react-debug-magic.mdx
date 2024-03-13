@@ -22,7 +22,7 @@ Ingredients:
 Chant:
 
 ```jsx
-console.log("Reveal thyself, bug!");
+console.log("Reveal thyself, bug!")
 ```
 
 With this spell, the hidden bug will have no choice but to show itself. Remember, the console is your wand; wield it wisely.
@@ -40,10 +40,10 @@ Ingredients:
 Chant:
 
 ```jsx
-this.setState((prevState) => ({
+this.setState(prevState => ({
   ...prevState,
   newStateValue: "Magically updated!",
-}));
+}))
 ```
 
 This careful blend of prevState and useEffect ensures that your state changes are as smooth as a wizard's potion.
@@ -63,7 +63,7 @@ Brew:
 Mix these ingredients in your component's cauldron. Use `useMemo` and `useCallback` to prevent unnecessary re-renders, and `PureComponent` to ensure your components only update when truly needed.
 
 ```jsx
-const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b])
 ```
 
 With this potion, your app will fly faster than a witch on a broomstick during a full moon.

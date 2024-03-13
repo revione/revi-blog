@@ -16,7 +16,7 @@ Our story begins with a developer, much like yourself, who notices something ami
 ```jsx
 const MysteryComponent = ({ clue }) => (
   <div>{clue ? `Clue: ${clue}` : "No clue found."}</div>
-);
+)
 ```
 
 ## Chapter 2: Gathering Clues
@@ -24,11 +24,11 @@ const MysteryComponent = ({ clue }) => (
 Determined to solve the mystery, our developer dons their detective hat and begins to gather clues. The first stop? The PropTypes alley, where the types of props are declared. Perhaps the culprit left a clue in the form of a type mismatch.
 
 ```jsx
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"
 
 MysteryComponent.propTypes = {
   clue: PropTypes.string,
-};
+}
 ```
 
 ## Chapter 3: The Trail of Conditional Rendering
@@ -45,8 +45,8 @@ const MysteryComponent = ({ clue }) => {
         <div className="warning">Warning: Clue is missing!</div>
       )}
     </>
-  );
-};
+  )
+}
 ```
 
 ## Chapter 4: The Redux of Red Herring
@@ -54,12 +54,12 @@ const MysteryComponent = ({ clue }) => {
 In a surprising twist, our developer suspects Redux, the state manager, might be involved. But upon closer inspection, they realize it was a red herring; the props were simply not connected correctly.
 
 ```jsx
-import { useSelector } from "react-redux";
+import { useSelector } from "react-redux"
 
 const MysteryComponent = () => {
-  const clue = useSelector((state) => state.mystery.clue);
-  return <div>{clue ? `Clue: ${clue}` : "No clue found."}</div>;
-};
+  const clue = useSelector(state => state.mystery.clue)
+  return <div>{clue ? `Clue: ${clue}` : "No clue found."}</div>
+}
 ```
 
 ## Chapter 5: The Resolution
