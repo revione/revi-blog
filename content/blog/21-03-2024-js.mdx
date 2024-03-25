@@ -1,0 +1,22 @@
+---
+title: "Prototipo"
+description: "Prototipo"
+date: 2024-03-13
+published: true
+---
+
+Prototipo:
+
+Un prototipo es un objeto al que otro objeto hace referencia para heredar comportamiento.
+
+En JavaScript, cada objeto tiene una propiedad interna llamada [[Prototype]] (también conocida como **proto** en algunas implementaciones). Este [[Prototype]] es una referencia a otro objeto, que se llama el prototipo del objeto. Cuando se intenta acceder a una propiedad de un objeto y esta no se encuentra en el propio objeto, JavaScript buscará la propiedad en su prototipo, y si no la encuentra allí, seguirá buscando en el prototipo del prototipo, y así sucesivamente hasta llegar al objeto base Object.prototype. Este proceso se conoce como "búsqueda de prototipo".
+
+Herencia Prototípica:
+
+La herencia prototípica es el mecanismo que permite a los objetos heredar propiedades y métodos de otros objetos a través de sus prototipos.
+
+La herencia prototípica en JavaScript es el mecanismo mediante el cual los objetos pueden heredar propiedades y métodos de otros objetos a través de sus prototipos. JavaScript utiliza una cadena de prototipos para establecer la relación entre objetos. Cuando se crea un objeto utilizando una función constructora o mediante Object.create(), se establece automáticamente una relación de prototipo entre el nuevo objeto y el objeto que se utilizó como prototipo.
+
+Beneficios:
+
+Los beneficios de la herencia prototípica incluyen la flexibilidad y la eficiencia en la reutilización de código, ya que los métodos y propiedades pueden compartirse a través de la cadena de prototipos sin necesidad de duplicar código. Además, la capacidad de modificar dinámicamente los prototipos en tiempo de ejecución proporciona una gran flexibilidad para adaptar el comportamiento de los objetos según sea necesario.
