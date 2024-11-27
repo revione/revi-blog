@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
 
     const heading = title.length > 140 ? `${title.substring(0, 140)}...` : title
 
-    return new ImageResponse(
+    const response = new ImageResponse(
       (
         <div tw="flex relative flex-col p-12 w-full h-full items-start text-black bg-white">
           <div tw="flex items-center">
@@ -86,6 +86,18 @@ export async function GET(req: NextRequest) {
         ],
       }
     )
+
+    const headers = new Headers({
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+      "Surrogate-Control": "no-store",
+    })
+
+    return new Response(response.body, {
+      ...response,
+      headers,
+    })
   } catch (error) {
     return new Response("Failed to generate image", { status: 500 })
   }
